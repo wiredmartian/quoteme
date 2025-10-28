@@ -5,7 +5,9 @@ import (
 	"html/template"
 	"net/http"
 	"os"
-	"strconv"
+
+	"golang.org/x/text/language"
+	"golang.org/x/text/message"
 )
 
 type Service struct {
@@ -54,7 +56,14 @@ func updateTotal(w http.ResponseWriter, r *http.Request) {
 			total += service.Price
 		}
 	}
-	w.Write([]byte("R" + strconv.Itoa(total)))
+	// Format as currency with commas and 2 decimal places
+	formattedTotal := formatCurrency(total)
+	w.Write([]byte("R" + formattedTotal))
+}
+
+func formatCurrency(amount int) string {
+	p := message.NewPrinter(language.English)
+	return p.Sprintf("%.2f", float64(amount))
 }
 
 func getQuote(w http.ResponseWriter, r *http.Request) {

@@ -1,3 +1,7 @@
 module wiredmartians.com/quoteme
 
-go 1.21.5
+go 1.24.0
+
+toolchain go1.24.9
+
+require golang.org/x/text v0.30.0 // indirect
