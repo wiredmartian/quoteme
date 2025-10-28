@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Professional Development Services - Cost Estimator</title>
+  <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .service-card {
+      transition: all 0.2s ease-in-out;
+    }
+    .service-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    .service-card.selected {
+      border-color: #3B82F6;
+      background: linear-gradient(135deg, #EBF4FF 0%, #F0F9FF 100%);
+    }
+    .total-card {
+      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+    }
+    .category-header {
+      background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+  <div class="max-w-6xl mx-auto p-6">
+    <!-- Header -->
+    <div class="text-center mb-10">
+      <h1 class="text-4xl font-bold text-gray-900 mb-2">Professional Development Services</h1>
+      <p class="text-lg text-gray-600 mb-4">Custom Software Solutions & Digital Transformation</p>
+      <div class="max-w-3xl mx-auto bg-blue-50 border border-blue-200 rounded-lg p-4">
+        <p class="text-sm text-blue-800">
+          <span class="font-semibold">Pricing Estimate:</span> The prices shown are indicative estimates based on standard project requirements. 
+          Final pricing may vary depending on project complexity, specific requirements, timeline, and scope changes. 
+          Contact us for a detailed quote tailored to your exact needs.
+        </p>
+      </div>
+    </div>
+    <!-- Main Content -->
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Services Panel -->
+      <div class="lg:col-span-2">
+        <form hx-post="/update" hx-target="#total" hx-swap="innerHTML" hx-trigger="change">
+          {{range .}}
+          <div class="mb-8">
+            <div class="category-header rounded-lg p-4 mb-4 border border-gray-200">
+              <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+                {{.Category}}
+              </h2>
+            </div>
+            <div class="grid gap-3">
+              {{range .Services}}
+              <label class="service-card block p-4 bg-white rounded-xl shadow-sm border-2 border-gray-200 hover:border-blue-300 cursor-pointer">
+                <div class="flex items-start">
+                  <input type="checkbox" name="{{.Name}}" value="{{.Price}}" class="mr-4 mt-1 w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                  <div class="flex-1">
+                    <div class="flex justify-between items-start mb-2">
+                      <h3 class="font-semibold text-gray-900 text-lg">{{.Name}}</h3>
+                      <span class="text-xl font-bold text-blue-600">R{{.Price}}</span>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">{{.Description}}</p>
+                  </div>
+                </div>
+              </label>
+              {{end}}
+            </div>
+          </div>
+          {{end}}
+        </form>
+      </div>
+
+      <!-- Sticky Total Panel -->
+      <div class="lg:col-span-1">
+        <div class="sticky top-6">
+          <div class="total-card rounded-xl p-6 text-white shadow-lg">
+            <h2 class="text-xl font-semibold mb-4 flex items-center">
+              <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+              </svg>
+              Project Estimate
+            </h2>
+            <div id="total" class="text-4xl font-bold mb-4">R0</div>
+            <div class="text-blue-100 text-sm mb-6">
+              Select services above to see your custom quote
+            </div>
+            <button type="button" class="w-full bg-white text-blue-600 font-semibold py-3 px-6 rounded-lg hover:bg-blue-50 transition duration-200">
+              Get Detailed Quote
+            </button>
+            <div class="mt-4 text-xs text-blue-200">
+              * Final pricing may vary based on project complexity
+            </div>
+          </div>
+          
+          <!-- Selected Services Summary -->
+          <div class="mt-6 bg-white rounded-xl p-6 shadow-lg">
+            <h3 class="font-semibold text-gray-900 mb-4 flex items-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Selected Services
+            </h3>
+            <div id="selected-services" class="text-sm text-gray-600">
+              No services selected yet
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Enhanced interactivity
+    document.addEventListener('DOMContentLoaded', function() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      const selectedServicesDiv = document.getElementById('selected-services');
+      
+      function updateSelectedServices() {
+        const selected = Array.from(checkboxes)
+          .filter(cb => cb.checked)
+          .map(cb => cb.name);
+        
+        if (selected.length === 0) {
+          selectedServicesDiv.innerHTML = 'No services selected yet';
+        } else {
+          selectedServicesDiv.innerHTML = selected.map(service => 
+            `<div class="flex justify-between py-1"><span>• ${service}</span></div>`
+          ).join('');
+        }
+      }
+      
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+          const card = this.closest('.service-card');
+          if (this.checked) {
+            card.classList.add('selected');
+          } else {
+            card.classList.remove('selected');
+          }
+          updateSelectedServices();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

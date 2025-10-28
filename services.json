@@ -1,0 +1,192 @@
+[
+  {
+    "category": "🎯 Project Planning & Discovery",
+    "services": [
+      {
+        "name": "Project Planning & Consultation",
+        "price": 500,
+        "description": "We'll sit down with you to understand your vision and map out exactly what your app or website needs to do."
+      },
+      {
+        "name": "System Design & Planning",
+        "price": 500,
+        "description": "Creating a detailed plan of how all the parts of your app will work together smoothly."
+      },
+      {
+        "name": "Database & Data Planning",
+        "price": 500,
+        "description": "Designing how your app will store and organize information efficiently and securely."
+      }
+    ]
+  },
+  {
+    "category": "🎨 Design & User Experience",
+    "services": [
+      {
+        "name": "Static Website",
+        "price": 5000,
+        "description": "Building a website that looks great and works perfectly on phones, tablets, and computers. This is ideal for informational sites without complex features."
+      },
+      {
+        "name": "Interactive Web Application",
+        "price": 20000,
+        "description": "Creating a dynamic web app where users can interact, submit forms, and get real-time updates. This is perfect for more complex websites that need user engagement."
+      },
+      {
+        "name": "Mobile App for iPhone & Android",
+        "price": 30000,
+        "description": "Building a mobile app that works on both iPhones and Android phones from a single codebase. Great for reaching users on their mobile devices."
+      },
+      {
+        "name": "Mobile-Like Web App",
+        "price": 25000,
+        "description": "A web app that feels like a mobile app - works offline and can send notifications to users' phones. Perfect for engaging users on mobile devices without needing app store downloads."
+      }
+    ]
+  },
+  {
+    "category": "⚙️ Core Development & Features",
+    "services": [
+      {
+        "name": "Server & Data Management",
+        "price": 20000,
+        "description": "Building the behind-the-scenes system that powers your mobile app or web app and handles all user data securely. This includes managing servers, databases, and APIs."
+      },
+      {
+        "name": "User Accounts & Login System",
+        "price": 5000,
+        "description": "Setting up secure user registration, login, and managing what different users can access."
+      },
+      {
+        "name": "Database Setup",
+        "price": 5000,
+        "description": "Setting up secure storage for all your app's information with easy ways to find and update data."
+      },
+      {
+        "name": "File Upload & Storage",
+        "price": 8000,
+        "description": "Allowing users to upload photos, documents, or files and storing them safely in the cloud."
+      },
+      {
+        "name": "Admin Dashboard Backend",
+        "price": 20000,
+        "description": "Building the server-side features that power your admin panel for managing users and content. This offers tools to help you manage your app such as user management, content moderation, and analytics."
+      },
+      {
+        "name": "Background Tasks & Automation",
+        "price": 5000,
+        "description": "Setting up automated tasks like sending emails, processing orders, or generating reports."
+      }
+    ]
+  },
+  {
+    "category": "🔌 Payments & Integrations",
+    "services": [
+      {
+        "name": "Payment Processing",
+        "price": 15000,
+        "description": "Connecting your app to payment systems so customers can pay you safely online."
+      },
+      {
+        "name": "Payment Gateway Setup",
+        "price": 500,
+        "description": "Connecting your app to secure payment processors so customers can pay with cards or digital wallets."
+      },
+      {
+        "name": "Website Analytics Setup",
+        "price": 2000,
+        "description": "Adding tracking to see how visitors use your site and what features are most popular."
+      },
+      {
+        "name": "SMS & WhatsApp Messaging",
+        "price": 500,
+        "description": "Setting up automated text messages and WhatsApp notifications for your users."
+      },
+      {
+        "name": "Push & Email Notifications",
+        "price": 5000,
+        "description": "Sending automatic notifications to users' phones and email when important things happen."
+      },
+      {
+        "name": "Business Tool Integration",
+        "price": 10000,
+        "description": "Connecting your app to business tools like customer management systems or accounting software."
+      }
+    ]
+  },
+  {
+    "category": "☁️ Hosting & Infrastructure",
+    "services": [
+      {
+        "name": "Cloud Infrastructure Setup",
+        "price": 8000,
+        "description": "Setting up your app on reliable cloud servers that can grow with your business needs."
+      },
+      {
+        "name": "Automated Deployment System",
+        "price": 0,
+        "description": "Creating a system that automatically updates your live app whenever you make changes to the code."
+      },
+      {
+        "name": "App Packaging & Scaling",
+        "price": 0,
+        "description": "Packaging your app so it can easily handle more users as your business grows."
+      },
+      {
+        "name": "Monitoring & Error Tracking",
+        "price": 5000,
+        "description": "Setting up systems to watch your app's performance and alert you if anything goes wrong."
+      }
+    ]
+  },
+  {
+    "category": "🚀 Launch & Go-Live",
+    "services": [
+      {
+        "name": "Domain Name & Security Setup",
+        "price": 500,
+        "description": "Getting your website address (like yourcompany.com) and making it secure with SSL certificates."
+      },
+      {
+        "name": "Website Hosting & Launch",
+        "price": 0,
+        "description": "Putting your app online so people around the world can access it reliably."
+      },
+      {
+        "name": "Database Hosting",
+        "price": 0,
+        "description": "Setting up secure, fast storage for your app's data that can handle real users."
+      },
+      {
+        "name": "Email System Setup",
+        "price": 500,
+        "description": "Setting up professional email sending for notifications, receipts, and user communication."
+      },
+      {
+        "name": "Backup & Data Protection",
+        "price": 1000,
+        "description": "Creating automatic backups of your data so you never lose important information."
+      }
+    ]
+  },
+  {
+    "category": "🔧 Ongoing Support & Maintenance",
+    "services": [
+      {
+        "name": "Speed & Performance Optimization",
+        "price": 2000,
+        "description": "Making your app faster and more efficient so users have a better experience."
+      },
+      {
+        "name": "24/7 Monitoring & Support",
+        "price": 3000,
+        "description": "Watching your app around the clock and quickly fixing any problems that arise."
+      },
+      {
+        "name": "Monthly Support Package",
+        "price": 3500,
+        "description": "Regular monthly support for small updates, questions, and minor adjustments."
+      }
+    ]
+  }
+]
