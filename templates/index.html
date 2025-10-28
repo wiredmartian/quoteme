@@ -58,7 +58,7 @@
                   <div class="flex-1">
                     <div class="flex justify-between items-start mb-2">
                       <h3 class="font-semibold text-gray-900 text-lg">{{.Name}}</h3>
-                      <span class="text-xl font-bold text-blue-600">R{{.Price}}</span>
+                      <span class="text-xl font-bold text-blue-600">R<span class="format-currency">{{.Price}}</span></span>
                     </div>
                     <p class="text-gray-600 leading-relaxed">{{.Description}}</p>
                   </div>
@@ -160,10 +160,25 @@
   </footer>
 
   <script>
+    // Currency formatting function
+    function formatCurrency(amount) {
+      return new Intl.NumberFormat('en-ZA', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(amount);
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
       const selectedServicesDiv = document.getElementById('selected-services');
       const getQuoteBtn = document.getElementById('get-quote-btn');
+      
+      // Format all currency values on page load
+      const currencyElements = document.querySelectorAll('.format-currency');
+      currencyElements.forEach(element => {
+        const amount = parseInt(element.textContent);
+        element.textContent = formatCurrency(amount);
+      });
       
       function updateSelectedServices() {
         const selected = Array.from(checkboxes)
