@@ -85,7 +85,7 @@
             <div class="text-blue-100 text-sm mb-6">
               Select services above to see your custom quote
             </div>
-            <button type="button" class="w-full bg-white text-blue-600 font-semibold py-3 px-6 rounded-lg hover:bg-blue-50 transition duration-200">
+            <button type="button" id="get-quote-btn" class="w-full bg-white text-blue-600 font-semibold py-3 px-6 rounded-lg hover:bg-blue-50 transition duration-200">
               Get Detailed Quote
             </button>
             <div class="mt-4 text-xs text-blue-200">
@@ -163,6 +163,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
       const selectedServicesDiv = document.getElementById('selected-services');
+      const getQuoteBtn = document.getElementById('get-quote-btn');
       
       function updateSelectedServices() {
         const selected = Array.from(checkboxes)
@@ -188,6 +189,34 @@
           }
           updateSelectedServices();
         });
+      });
+
+      // Handle quote generation
+      getQuoteBtn.addEventListener('click', function() {
+        const selectedServices = Array.from(checkboxes)
+          .filter(cb => cb.checked)
+          .map(cb => cb.name);
+        
+        if (selectedServices.length === 0) {
+          alert('Please select at least one service to generate a quote.');
+          return;
+        }
+
+        // Create a form and submit it
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/quote';
+        
+        selectedServices.forEach(serviceName => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = serviceName;
+          input.value = 'on';
+          form.appendChild(input);
+        });
+        
+        document.body.appendChild(form);
+        form.submit();
       });
     });
   </script>

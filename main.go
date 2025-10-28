@@ -20,7 +20,6 @@ type Category struct {
 	Services []Service
 }
 
-// Global variables to store data
 var categories []Category
 var serviceMap map[string]Service
 
@@ -29,7 +28,6 @@ func main() {
 	data, _ := os.ReadFile("services.json")
 	json.Unmarshal(data, &categories)
 
-	// Create a map for quick service lookup by name
 	serviceMap = make(map[string]Service)
 	for _, category := range categories {
 		for _, service := range category.Services {
@@ -39,6 +37,7 @@ func main() {
 
 	http.HandleFunc("/", estimatePage)
 	http.HandleFunc("/update", updateTotal)
+	http.HandleFunc("/quote", getQuote)
 	http.ListenAndServe(":8080", nil)
 }
 
@@ -51,12 +50,29 @@ func updateTotal(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	total := 0
 	for serviceName := range r.Form {
-		if serviceName == "submit" { // Skip the submit button
-			continue
-		}
 		if service, exists := serviceMap[serviceName]; exists {
 			total += service.Price
 		}
 	}
 	w.Write([]byte("R" + strconv.Itoa(total)))
+}
+
+func getQuote(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	var selectedServices []Service
+	for serviceName := range r.Form {
+		if service, exists := serviceMap[serviceName]; exists {
+			selectedServices = append(selectedServices, service)
+		}
+	}
+
+	// Create template with custom functions
+	funcMap := template.FuncMap{
+		"add": func(a, b int) int {
+			return a + b
+		},
+	}
+
+	tmpl := template.Must(template.New("quote.html").Funcs(funcMap).ParseFiles("templates/quote.html"))
+	tmpl.Execute(w, selectedServices)
 }
