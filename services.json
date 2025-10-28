@@ -9,13 +9,13 @@
       },
       {
         "name": "System Design & Planning",
-        "price": 500,
-        "description": "Creating a detailed plan of how all the parts of your app will work together smoothly."
+        "price": 0,
+        "description": "Creating a detailed plan of how all the parts of your app will work together smoothly. (Included in project planning)"
       },
       {
         "name": "Database & Data Planning",
-        "price": 500,
-        "description": "Designing how your app will store and organize information efficiently and securely."
+        "price": 0,
+        "description": "Designing how your app will store and organize information efficiently and securely. (Included in project planning)"
       }
     ]
   },
@@ -59,8 +59,8 @@
       },
       {
         "name": "Database Setup",
-        "price": 5000,
-        "description": "Setting up secure storage for all your app's information with easy ways to find and update data."
+        "price": 0,
+        "description": "Setting up secure storage for all your app's information with easy ways to find and update data. (Included in Server & Data Management)"
       },
       {
         "name": "File Upload & Storage",
@@ -85,12 +85,12 @@
       {
         "name": "Payment Processing",
         "price": 15000,
-        "description": "Connecting your app to payment systems so customers can pay you safely online."
+        "description": "Connecting your app to payment systems so customers can pay you safely online. Includes full payment gateway setup and integration."
       },
       {
         "name": "Payment Gateway Setup",
-        "price": 500,
-        "description": "Connecting your app to secure payment processors so customers can pay with cards or digital wallets."
+        "price": 0,
+        "description": "Connecting your app to secure payment processors so customers can pay with cards or digital wallets. (Included in Payment Processing)"
       },
       {
         "name": "Website Analytics Setup",
@@ -120,17 +120,17 @@
       {
         "name": "Cloud Infrastructure Setup",
         "price": 8000,
-        "description": "Setting up your app on reliable cloud servers that can grow with your business needs."
+        "description": "Setting up your app on reliable cloud servers that can grow with your business needs. Includes automated deployment and app packaging."
       },
       {
         "name": "Automated Deployment System",
         "price": 0,
-        "description": "Creating a system that automatically updates your live app whenever you make changes to the code."
+        "description": "Creating a system that automatically updates your live app whenever you make changes to the code. (Included in Cloud Infrastructure Setup)"
       },
       {
         "name": "App Packaging & Scaling",
         "price": 0,
-        "description": "Packaging your app so it can easily handle more users as your business grows."
+        "description": "Packaging your app so it can easily handle more users as your business grows. (Included in Cloud Infrastructure Setup)"
       },
       {
         "name": "Monitoring & Error Tracking",
