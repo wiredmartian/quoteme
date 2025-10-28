@@ -29,18 +29,13 @@
       },
       {
         "name": "Interactive Web Application",
-        "price": 20000,
+        "price": 15000,
         "description": "Creating a dynamic web app where users can interact, submit forms, and get real-time updates. This is perfect for more complex websites that need user engagement."
       },
       {
         "name": "Mobile App for iPhone & Android",
         "price": 30000,
         "description": "Building a mobile app that works on both iPhones and Android phones from a single codebase. Great for reaching users on their mobile devices."
-      },
-      {
-        "name": "Mobile-Like Web App",
-        "price": 25000,
-        "description": "A web app that feels like a mobile app - works offline and can send notifications to users' phones. Perfect for engaging users on mobile devices without needing app store downloads."
       }
     ]
   },
@@ -156,6 +151,11 @@
         "name": "Database Hosting",
         "price": 0,
         "description": "Setting up secure, fast storage for your app's data that can handle real users."
+      },
+      {
+        "name": "App Store Deployment",
+        "price": 3000,
+        "description": "Publishing your mobile app to the Apple App Store and Google Play Store, including app store optimization and compliance setup."
       },
       {
         "name": "Email System Setup",
