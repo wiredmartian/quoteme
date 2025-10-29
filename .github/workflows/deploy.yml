@@ -1,0 +1,41 @@
+name: deploy app
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  deploy_app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.24
+
+      - name: unit tests
+        run: go test -v ./...
+      - name: build app
+        run: go build -v ./...
+      - name: build executable
+        run: go build -o bin/app main.go
+
+      - name: copy assets to bin folder
+        run: |
+          mkdir -p bin/templates
+          cp -r templates/* bin/templates/
+          cp services.json bin/
+
+      - name: copy files to linux server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          source: bin/*
+          target: ${{ secrets.TARGET_PATH }}
+        
+            
+            
